@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>瑜伽肌肉圖譜</title>
+<meta name="description" content="點選瑜伽體式，3D 人體會擺出該姿勢，並以紅色（收縮）與藍色（伸展）低頻閃爍標示對應的肌肉。">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<header class="brand">
+  <div class="eyebrow">YOGA MUSCLE ATLAS</div>
+  <h1>瑜伽肌肉圖譜</h1>
+  <p>點選體式，看哪些肌肉在<span class="r">收縮</span>、哪些在<span class="b">伸展</span></p>
+</header>
+
+<aside id="poses" class="panel">
+  <div class="panel-head">
+    <span>體式</span>
+    <button id="autoBtn" class="ghost">▶ 自動播放</button>
+  </div>
+  <div id="poseList"></div>
+</aside>
+
+<aside id="detail" class="panel">
+  <div id="muscleCard" hidden></div>
+  <div class="pose-head">
+    <h2 id="poseTitle"></h2>
+    <div id="poseSub" class="sub"></div>
+  </div>
+  <p id="poseDesc" class="desc"></p>
+  <h3><span class="dot red"></span>收縮・主動出力</h3>
+  <div id="contractList" class="chips"></div>
+  <h3><span class="dot blue"></span>伸展・被拉長</h3>
+  <div id="stretchList" class="chips"></div>
+  <h3>動作提示</h3>
+  <ol id="cueList" class="cues"></ol>
+  <p class="note">實心標籤為主要肌群，外框標籤為次要。點標籤或直接點 3D 模型上的肌肉可看說明。</p>
+</aside>
+
+<div id="legend" class="panel">
+  <span class="lg"><span class="dot red pulse"></span>收縮</span>
+  <span class="lg"><span class="dot blue pulse"></span>伸展</span>
+  <label class="sw"><input type="checkbox" id="optFocus"><span>只看相關肌肉</span></label>
+  <label class="sw"><input type="checkbox" id="optShell" checked><span>身體外殼</span></label>
+  <label class="sw"><input type="checkbox" id="optRotate"><span>自動旋轉</span></label>
+  <label class="speed"><span>閃爍</span><input type="range" id="optSpeed" min="0.2" max="1.5" step="0.1" value="0.5"><span id="speedVal">0.5 Hz</span></label>
+</div>
+
+<div id="tip"></div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
